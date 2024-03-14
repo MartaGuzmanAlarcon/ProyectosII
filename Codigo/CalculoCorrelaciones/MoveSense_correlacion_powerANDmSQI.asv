@@ -1,0 +1,33 @@
+% correlacion entre geometricMean_vector y las potencias 
+%hacer esto para x, y ,z y para las tres sumadas. Las cuatro señales que se calculan.
+
+% importar archivos de geometric vector:
+%OJO: al importar coge 4 decimales y redondea el ultimo
+data = readmatrix('/Users/martaguzman/3_Carrera/3S2/ProyectosII/ArchivosPrueba/tablasResultados/MoveSenseResultados_geometricMean_vector.csv');
+resultados_geometricMean_vector = data(:, 1); 
+
+% importar archivos de potencias:
+
+data = readmatrix('/Users/martaguzman/3_Carrera/3S2/ProyectosII/ArchivosPrueba/tablasResultados/MoveSenseResultados_potencias 10.20.51.csv');
+resultados_potenciax = data(:, 1); 
+resultados_potenciay = data(:, 2); 
+resultados_potenciaz = data(:, 3); 
+resultados_potenciaxyz = data(:, 7); 
+
+% Calculate correlations
+corr_mSQI_px = corr(resultados_geometricMean_vector, resultados_potenciax);
+corr_mSQI_py = corr(resultados_geometricMean_vector, resultados_potenciay);
+corr_mSQI_pz = corr(resultados_geometricMean_vector, resultados_potenciaz);
+corr_mSQI_pxyz = corr(resultados_geometricMean_vector, resultados_potenciaxyz);
+
+% Save the correlations:
+% Define correlation results as a table
+columnas = {'nd_resultados_ptor_and_resultados_potenciaxyz'};
+
+resultados = [corr_mSQI_px; corr_mSQI_py; corr_mSQI_pz; corr_mSQI_pxyz];
+
+tabla_resultados = array2table(resultados, 'VariableNames', columnas); % array2table(datos,'VariableNames', nombre d las col) 
+
+nombre_archivo = 'Movesense_correlation_results.csv';
+
+writetable(tabla_resultados, nombre_archivo);

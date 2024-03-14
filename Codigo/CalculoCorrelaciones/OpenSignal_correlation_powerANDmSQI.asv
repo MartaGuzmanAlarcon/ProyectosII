@@ -1,0 +1,24 @@
+% importar archivos de geometric vector:
+%OJO: al importar coge 4 decimales y redondea el ultimo
+data = readmatrix('/Users/martaguzman/3_Carrera/3S2/ProyectosII/ArchivosPrueba/tablasResultados/OpenSignalResultados_geometricMean_vector.csv');
+resultados_geometricMean_vector = data(:, 1); 
+
+% importar archivos de potencias:
+
+data = readmatrix('/Users/martaguzman/3_Carrera/3S2/ProyectosII/ArchivosPrueba/tablasResultados/OpenSignalResultados_potencias 10.20.51.csv');
+resultados_potenciax = data(:, 1); 
+resultados_potenciay = data(:, 2); 
+resultados_potenciaz = data(:, 3); 
+resultados_potenciaxyz = data(:, 4); 
+
+% Calculate correlations
+corr_mSQI_px = corr(resultados_geometricMean_vector, resultados_potenciax);
+corr_mSQI_py = corr(resultados_geometricMean_vector, resultados_potenciay);
+corr_mSQI_pz = corr(resultados_geometricMean_vector, resultados_potenciaz);
+corr_mSQI_pxyz = corr(resultados_geometricMean_vector, resultados_potenciaxyz);
+
+% Display results
+fprintf('Correlation between resultados_geometricMean_vector and resultados_potenciax: %.4f\n', corr_x);
+fprintf('Correlation between resultados_geometricMean_vector and resultados_potenciay: %.4f\n', corr_y);
+fprintf('Correlation between resultados_geometricMean_vector and resultados_potenciaz: %.4f\n', corr_z);
+fprintf('Correlation between resultados_geometricMean_vector and resultados_potenciaxyz: %.4f\n', corr_xyz);
