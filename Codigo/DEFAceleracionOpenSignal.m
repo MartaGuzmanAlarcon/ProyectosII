@@ -9,6 +9,7 @@ file1 = 'opensignals_Escaleras_22-58-24.txt';
 file2 = 'opensignals_Sentada_22-53-55.txt';
 file3 = 'opensignals_tumbada_22-50-01.txt';
 file4 = 'opensignals_Registro1h_23-04-49.txt';
+%Top1.txt
 
 files_pruebaCortas_OpenSignal = {file1, file2, file3, file4};
 
@@ -24,6 +25,7 @@ for file_index = 1:numel(files_pruebaCortas_OpenSignal)
     posicion_y = data(:, 5);
     posicion_z = data(:, 4);
 
+    %add file 0
     min_x = 20000;%min(posicion_x);
     min_y = 20000;%min(posicion_y);
     min_z = 20000;%min(posicion_z);
