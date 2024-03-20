@@ -3,7 +3,8 @@ frecuencia_original = 1000;  % Hz
 
 % Número de muestras por ventana de 10 segundos
 muestras_por_ventana = round(frecuencia_original * 10); % 10000 Hz
-%No seas chapucera!!!!!
+%No seas chapucera!!!!! ----> No lo seré no te preocupes, q de los errores
+%se aprende
 % Nombres de los archivos de prueba: Escaleras, Sentada, Tumbada
 file1 = 'opensignals_Escaleras_22-58-24.txt';
 file2 = 'opensignals_Sentada_22-53-55.txt';
