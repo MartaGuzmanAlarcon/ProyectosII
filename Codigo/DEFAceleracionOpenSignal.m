@@ -8,8 +8,9 @@ muestras_por_ventana = round(frecuencia_original * 10); % 10000 Hz
 file1 = 'opensignals_Escaleras_22-58-24.txt';
 file2 = 'opensignals_Sentada_22-53-55.txt';
 file3 = 'opensignals_tumbada_22-50-01.txt';
+file4 = 'opensignals_Registro1h_23-04-49.txt';
 
-files_pruebaCortas_OpenSignal = {file1, file2, file3};
+files_pruebaCortas_OpenSignal = {file1, file2, file3, file4};
 
 % Loop sobre cada archivo
 for file_index = 1:numel(files_pruebaCortas_OpenSignal)
@@ -23,18 +24,29 @@ for file_index = 1:numel(files_pruebaCortas_OpenSignal)
     posicion_y = data(:, 5);
     posicion_z = data(:, 4);
 
+    min_x = 20000;%min(posicion_x);
+    min_y = 20000;%min(posicion_y);
+    min_z = 20000;%min(posicion_z);
+    max_x = 36000;%max(posicion_x);
+    max_y = 36000;%max(posicion_y);
+    max_z = 36000;%max(posicion_z);
+
+    aceleracion_x =  2*(posicion_x-min_x)/(max_x-min_x) -1;
+    aceleracion_y =  2*(posicion_y-min_y)/(max_y-min_y) -1;
+    aceleracion_z =  2*(posicion_z-min_z)/(max_z-min_z) -1;
+
     % Calcular las velocidades a partir de las posiciones (primera derivada)
-    velocidad_x = diff(posicion_x);
-    velocidad_y = diff(posicion_y);
-    velocidad_z = diff(posicion_z);
+    %velocidad_x = diff(posicion_x);
+    %velocidad_y = diff(posicion_y);
+    %velocidad_z = diff(posicion_z);
 
     % Asumir un intervalo de tiempo constante (s)
-    intervalo_tiempo = mean(diff(data(:, 1)));  
+    %intervalo_tiempo = mean(diff(data(:, 1)));  
 
     % Calcular las aceleraciones a partir de las velocidades (segunda derivada)
-    aceleracion_x = diff(velocidad_x) / intervalo_tiempo;
-    aceleracion_y = diff(velocidad_y) / intervalo_tiempo;
-    aceleracion_z = diff(velocidad_z) / intervalo_tiempo;
+    %aceleracion_x = diff(velocidad_x) / intervalo_tiempo;
+    %aceleracion_y = diff(velocidad_y) / intervalo_tiempo;
+    %aceleracion_z = diff(velocidad_z) / intervalo_tiempo;
 
     % Inicializar variables para el filtro paso bajo
     g_x = 0;

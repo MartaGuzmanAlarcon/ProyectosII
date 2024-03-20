@@ -1,14 +1,10 @@
-
-% Lista de archivos de ECG: Escaleras, Sentada, Tumbada
-files_pruebaCortasECG = {'20240301_Escaleras_ecg_stream.csv','20240301 _Sentada_ecg_stream.csv','20240301_Tumbada_ecg_stream.csv'};
-
-
 % Nombres de los archivos de prueba: Escaleras, Sentada, Tumbada
 file1 = 'opensignals_Escaleras_22-58-24.txt';
 file2 = 'opensignals_Sentada_22-53-55.txt';
 file3 = 'opensignals_tumbada_22-50-01.txt';
+file4 = 'opensignals_Registro1h_23-04-49.txt';
 
-files_pruebaCortas_OpenSignal = {file1, file2, file3};
+files_pruebaCortas_OpenSignal = {file1, file2, file3, file4};
 
 % Loop sobre cada archivo
 for file_index = 1:numel(files_pruebaCortas_OpenSignal)
